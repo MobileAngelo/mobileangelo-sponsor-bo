@@ -22,5 +22,8 @@ module Mobileangelo
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    HashIdConfig = Struct.new(:salt, :minimum_length, :authorized)
+    config.hashid = HashIdConfig.new("mobile angelo rocks so much", 5, 'ABCDEFGHIJK12345')
   end
 end
