@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150204212613) do
+ActiveRecord::Schema.define(version: 20150205153737) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -27,6 +27,18 @@ ActiveRecord::Schema.define(version: 20150204212613) do
   add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace"
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
+
+  create_table "transactions", force: :cascade do |t|
+    t.integer  "recipient_id"
+    t.decimal  "amount",        precision: 8, scale: 2
+    t.string   "sender_name"
+    t.string   "sender_mail"
+    t.string   "sender_mobile"
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+  end
+
+  add_index "transactions", ["recipient_id"], name: "index_transactions_on_recipient_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "firstname"
