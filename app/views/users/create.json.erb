@@ -9,7 +9,7 @@
 		"lastname": <%=raw @user.lastname.to_json %>,
 		"email": <%=raw @user.email.to_json %>,
 		"mobile": <%=raw @user.mobile.phony_formatted.to_json %>,
-		"sponsor_code": <%=raw encode_to_hash_id(@user.id).to_json %>
+		"sponsor_code": <%=raw @user.hash_id.to_json %>
 	}
 }
 <% end %>
