@@ -17,12 +17,27 @@ ActiveAdmin.register Transaction do
     actions
   end
 
+  show :title => proc{|transaction| "Transaction with #{transaction.sender_mobile.phony_formatted}" } do |transaction|
+    panel("Transaction details") do
+      attributes_table_for transaction do
+        row :amount do |transaction|
+          number_to_currency(transaction.amount, locale: :fr)
+        end
+        row :sender_name
+        row :sender_mail
+        row :sender_mobile do |transaction|
+          transaction.sender_mobile.phony_formatted
+        end
+      end
+    end
+  end
+
   form do |f|
     inputs 'Details' do
       input :recipient_id, as: :hidden
       input :amount
       input :sender_name
-      input :sender_mobile
+      input :sender_mobile, :input_html => { :value => f.object.sender_mobile.phony_formatted }
       input :sender_mail
     end
     actions
