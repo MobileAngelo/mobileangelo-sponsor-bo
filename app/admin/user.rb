@@ -10,6 +10,9 @@ ActiveAdmin.register User do
       user.mobile.phony_formatted
     end
     column "Sponsor Code", :hash_id
+    column "Total credit" do |user|
+      number_to_currency(user.credit, locale: :fr)
+    end
     
     actions
   end
@@ -31,6 +34,9 @@ ActiveAdmin.register User do
         end
         row "Sponsor Code" do |user|
           user.hash_id
+        end
+        row "Total credit" do |user|
+          number_to_currency(user.credit, locale: :fr)
         end
       end
     end 
