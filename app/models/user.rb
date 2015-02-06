@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :transactions, foreign_key: 'recipient_id'
+
   phony_normalize :mobile, :default_country_code => 'FR'
 
   validates :email, :presence => true, :email => true  

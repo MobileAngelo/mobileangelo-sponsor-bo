@@ -14,18 +14,37 @@ ActiveAdmin.register User do
     actions
   end
 
-  show :title => proc{|user| user.mobile.phony_formatted } do 
-    attributes_table do
-      row :firstname
-      row :lastname
-      row :email
-      row :mobile do |user|
-        user.mobile.phony_formatted
+  sidebar "Transactions", only: [:show, :edit] do
+    ul do
+      li link_to "Transactions",    admin_user_transactions_path(user)
+    end
+  end
+
+  show :title => proc{|user| user.mobile.phony_formatted } do |user|
+    panel("User details") do
+      attributes_table_for user do
+        row :firstname
+        row :lastname
+        row :email
+        row :mobile do |user|
+          user.mobile.phony_formatted
+        end
+        row "Sponsor Code" do |user|
+          user.hash_id
+        end
       end
-      row "Sponsor Code" do |user|
-        user.hash_id
+    end 
+=begin
+    panel("Transactions") do
+      table_for(user.transactions) do   
+        column :amount          
+        column :sender_name
+        column :sender_mail
+        column :sender_mobile
       end
     end
+=end
+
   end
 
   form do |f|
