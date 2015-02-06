@@ -67,6 +67,10 @@ ActiveAdmin.register User do
     [:firstname, :lastname, :mobile, :email]
   end
 
-  preserve_default_filters!
   filter :with_hash_id, as: :string, label: 'Sponsor code'
+  filter :firstname
+  filter :lastname
+  filter :email
+  filter :mobile
+  filter :created_at
 end
