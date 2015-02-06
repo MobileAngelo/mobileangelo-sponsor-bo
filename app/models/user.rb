@@ -25,4 +25,8 @@ class User < ActiveRecord::Base
   def self.hash_id_instance 
     Hashids.new(Rails.configuration.hashid.salt, Rails.configuration.hashid.minimum_length, Rails.configuration.hashid.authorized)
   end
+
+  def credit
+    transactions.sum(:amount)
+  end
 end

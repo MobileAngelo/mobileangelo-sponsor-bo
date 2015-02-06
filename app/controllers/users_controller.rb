@@ -1,8 +1,5 @@
 class UsersController < ApplicationController
-  before_action :clean_input, only: :create
-
-  def index
-  end
+  before_action :clean_input, only: [:create, :show]
 
   def create
     @user = User.find_or_initialize_by mobile: params[:user][:mobile],
@@ -16,7 +13,7 @@ class UsersController < ApplicationController
       render status: :bad_request
     end
   end
-
+  
 private 
 
   def clean_input
