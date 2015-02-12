@@ -1,0 +1,16 @@
+<% unless @user.errors.empty? %>
+{
+	"errors": <%=raw @user.errors.full_messages.to_json %>
+}
+<% else %>
+{
+	"user": {
+		"firstname": <%=raw @user.firstname.to_json %>,
+		"lastname": <%=raw @user.lastname.to_json %>,
+		"email": <%=raw @user.email.to_json %>,
+		"mobile": <%=raw @user.mobile.phony_formatted.to_json %>,
+		"sponsor_code": <%=raw @user.hash_id.to_json %>,
+		"credit": <%=raw @user.credit.to_json %>
+	}
+}
+<% end %>
