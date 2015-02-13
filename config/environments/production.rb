@@ -77,4 +77,7 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # Needed for the ActiveAdmin's manifest assets.
+  config.assets.precompile += ['active_admin.css', 'active_admin.js']
 end
