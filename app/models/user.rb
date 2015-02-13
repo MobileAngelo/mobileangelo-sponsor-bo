@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :transactions, foreign_key: 'recipient_id', dependant: :delete_all
+  has_many :transactions, foreign_key: 'recipient_id', dependent: :delete_all
 
   phony_normalize :mobile, :default_country_code => 'FR'
 
