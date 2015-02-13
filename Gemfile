@@ -44,6 +44,9 @@ gem 'valid_email'
 # Active Admin
 gem 'activeadmin', github: 'activeadmin'
 
+# Puma
+gem 'puma'
+
 group :development, :test do
   gem 'sqlite3'
 

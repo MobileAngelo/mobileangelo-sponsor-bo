@@ -129,6 +129,8 @@ GEM
       phony (~> 2.10.1)
     polyamorous (1.1.0)
       activerecord (>= 3.0)
+    puma (2.11.1)
+      rack (>= 1.1, < 2.0)
     rack (1.6.0)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -220,6 +222,7 @@ DEPENDENCIES
   jquery-rails
   pg
   phony_rails
+  puma
   rails (= 4.2.0)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
