@@ -9,6 +9,6 @@ class CreateTransactions < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-    add_foreign_key :transactions, :recipients
+    add_foreign_key :transactions, :users, column: :recipient_id
   end
 end
