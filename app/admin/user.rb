@@ -57,7 +57,10 @@ ActiveAdmin.register User do
     f.inputs "User" do
       f.input :firstname
       f.input :lastname
-      f.input :mobile, :input_html => { :value => f.object.mobile.phony_formatted }
+
+      mobile = f.object.mobile ? f.object.mobile.phony_formatted : ""
+
+      f.input :mobile, :input_html => { :value => mobile }
       f.input :email
     end
     f.actions
