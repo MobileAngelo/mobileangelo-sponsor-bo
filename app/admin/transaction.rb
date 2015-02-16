@@ -37,7 +37,9 @@ ActiveAdmin.register Transaction do
       input :recipient_id, as: :hidden
       input :amount
       input :sender_name
-      input :sender_mobile, :input_html => { :value => f.object.sender_mobile.phony_formatted }
+
+      mobile = f.object.sender_mobile ? f.object.sender_mobile.phony_formatted : ""
+      input :sender_mobile, :input_html => { :value => mobile }
       input :sender_mail
     end
     actions
