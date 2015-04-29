@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :clean_input, only: [:create, :show]
+  http_basic_authenticate_with :name => "mobileangelo", :password => "mobileangelorockssomuch!", only: [:show]
+  before_action :clean_input, only: [:create]
 
   def create
     @user = User.find_or_initialize_by mobile: params[:user][:mobile],
@@ -11,6 +12,16 @@ class UsersController < ApplicationController
       render status: :ok
     else 
       render status: :bad_request
+    end
+  end
+
+  def show
+    @user = User.find_by id: User.decode_hash_id(params[:id])
+
+    if @user
+      render status: :ok
+    else 
+      render status: :not_found
     end
   end
   

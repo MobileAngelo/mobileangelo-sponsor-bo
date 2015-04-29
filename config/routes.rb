@@ -55,5 +55,5 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
-  resources :users, only: [:create]
+  resources :users, only: [:create, :show]
 end
