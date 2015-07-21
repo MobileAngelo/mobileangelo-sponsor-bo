@@ -17,6 +17,21 @@ ActiveAdmin.register User do
     actions
   end
 
+  csv do
+    column :firstname
+    column :lastname
+    column :email
+    column :mobile do |user|
+      user.mobile.phony_formatted
+    end
+    column "Sponsor Code" do |user|
+      user.hash_id
+    end
+    column "Total credit" do |user|
+      number_to_currency(user.credit, locale: :fr)
+    end
+  end
+
   sidebar "Transactions", only: [:show, :edit] do
     ul do
       li link_to "Transactions",    admin_user_transactions_path(user)
