@@ -47,6 +47,9 @@ gem 'activeadmin', github: 'activeadmin'
 # Puma
 gem 'puma'
 
+# Sending Email
+gem 'mandrill-api'
+
 group :development, :test do
   gem 'sqlite3'
 
