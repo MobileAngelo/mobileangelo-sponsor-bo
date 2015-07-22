@@ -36,10 +36,11 @@ class User < ActiveRecord::Base
         # A mandrill error occurred: Mandrill::UnknownSubaccountError - No subaccount exists with the id 'customer-123'    
         raise
     end
-
-
   end
 
+  def as_json(options={})
+    super(:only => [:email, :mobile, :firstname, :lastname], :methods => [:hash_id, :credit])
+  end
 
   def hash_id
     User.hash_id_instance.encode(id)
